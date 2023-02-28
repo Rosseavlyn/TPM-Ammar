@@ -1,139 +1,121 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import './perhitungan.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
 
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Regu TPM',
-      theme: ThemeData(
-        primaryColor: Colors.black,
-      ),
-      home: Login(),
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Login());
   }
 }
 
-class Login extends StatefulWidget{
-
-  String username = "tes";
-  String password = "123";
-  void prosesLogin(){}
-
+class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
+  final String user = 'admin';
+  final String pass = '12345';
+
+  TextEditingController userText = TextEditingController();
+  TextEditingController passText = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-          padding: const EdgeInsets.all(8),
-          width: MediaQuery.of(context).size.width,
-          color: Colors.lightBlue,
+        appBar: AppBar(
+          title: Text('Tugas TPM 1'),
+        ),
+        body: Center(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                        color: Colors.black87,
-                        shape: BoxShape.circle
-                    ),
-                    child: Center(
-                      child: Icon(Icons.person, size: 50, color: Colors.white,),
-                    ),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  'Anggota Kelompok :',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
                   ),
-
-                  SizedBox(height: 20,),
-
-                  Text("Selamat Datang", style: TextStyle(fontSize: 20, color: Colors.black87),),
-
-                  SizedBox(height: 20,),
-
-
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black87)
-                      ),
-                      prefixIcon: Icon(Icons.person, size: 40,),
-                      hintText: "Masukkan Username",
-                      hintStyle: TextStyle(color: Colors.black87),
-                      labelText: "Username",
-                      labelStyle: TextStyle(color: Colors.black87),
-                    ),
-                  ),
-                  SizedBox(height: 20,),
-
-                  TextFormField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.black87)
-                      ),
-                      prefixIcon: Icon(Icons.lock, size: 40,),
-                      hintText: "Masukkan Password",
-                      hintStyle: TextStyle(color: Colors.black87),
-                      labelText: "Password",
-                      labelStyle: TextStyle(color: Colors.black87),
-                    ),
-                  ),
-
-                  SizedBox(height: 20,),
-
-                  Card(
-                    color: Colors.black87,
-                    elevation: 5,
-                    child: Container(
-                      height: 50,
-                      child: InkWell(
-                        splashColor: Colors.white,
-                        onTap: (){},
-                        child: Center(
-                          child: Text("Masuk", style: TextStyle(fontSize: 20, color: Colors.white),),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
+                ),
               ),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  "1. M. Amar Ma'ruf \n2. Davit Septiawan \n3. Ardhian Kusumayuda",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                child: TextField(
+                  controller: userText,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(90.0),
+                    ),
+                    labelText: 'Username',
+                  ),
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                child: TextField(
+                  controller: passText,
+                  obscureText: false,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(90.0),
+                    ),
+                    labelText: 'Password',
+                  ),
+                ),
+              ),
+              Container(
+                  height: 80,
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      minimumSize: const Size.fromHeight(50),
+                    ),
+                    child: const Text('Log In'),
+                    onPressed: () {
+                      ceklogin(context);
+                    },
+                  )),
             ],
-          )
-      ),
-    );
+          ),
+        ));
+  }
+
+  void ceklogin(BuildContext context) {
+    if (userText.text == user && passText.text == pass) {
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => Hitung()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('User dan Password Anda salah..'),
+          backgroundColor: Colors.black,
+        ),
+      );
+    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
