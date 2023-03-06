@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tugas2tpm/menu.dart';
 import './main.dart';
 
 class Hitung extends StatefulWidget {
@@ -32,12 +33,6 @@ class _HitungState extends State<Hitung> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => MyApp()));
-            },
-            icon: Icon(Icons.arrow_back)),
         title: Text('Perhitungan'),
       ),
       body: Padding(

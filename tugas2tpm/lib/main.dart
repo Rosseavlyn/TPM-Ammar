@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './perhitungan.dart';
+import 'menu.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,28 +42,6 @@ class _LoginState extends State<Login> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  'Anggota Kelompok :',
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(20),
-                child: Text(
-                  "1. M. Amar Ma'ruf \n2. Davit Septiawan \n3. Ardhian Kusumayuda",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-              Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextField(
                   controller: userText,
@@ -78,8 +56,8 @@ class _LoginState extends State<Login> {
               Container(
                 padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
                 child: TextField(
+                  obscureText: true,
                   controller: passText,
-                  obscureText: false,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(90.0),
@@ -108,7 +86,7 @@ class _LoginState extends State<Login> {
   void ceklogin(BuildContext context) {
     if (userText.text == user && passText.text == pass) {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => Hitung()));
+          context, MaterialPageRoute(builder: (context) => MenuPage()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
