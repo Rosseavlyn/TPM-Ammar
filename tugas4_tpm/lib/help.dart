@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'list_tourism.dart';
-import 'stopwatch.dart';
 import 'login.dart';
-import 'profile_menu.dart';
-import 'package:readmore/readmore.dart';
 
 class HelpPage extends StatelessWidget {
   const HelpPage({Key? key}) : super(key: key);
@@ -12,7 +8,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Text(
             'Help',
@@ -25,7 +21,7 @@ class HelpPage extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 Icons.logout,
-                color: Colors.white,
+                color: Colors.black,
               ),
               onPressed: () {
                 Navigator.of(context).pushAndRemoveUntil(
@@ -47,7 +43,6 @@ class HelpPage extends StatelessWidget {
             SizedBox(height: 15),
 
             
-/*
             Text('Aplikasi ini adalah sebuah platform yang menyediakan informasi wisata dan fitur stopwatch yang memungkinkan pengguna untuk melihat profil mereka sendiri. Sebelum dapat menggunakan aplikasi ini, pengguna harus melakukan login terlebih dahulu. Berikut adalah langkah-langkah cara menggunakan aplikasi ini:',
             textAlign: TextAlign.justify,
             ),
@@ -137,20 +132,6 @@ class HelpPage extends StatelessWidget {
 
             Text('Pengguna dapat menikmati fitur-fitur yang disediakan, seperti melihat profil, melihat rekomendasi wisata, dan menggunakan stopwatch untuk membantu dalam kegiatan sehari-hari.',
             textAlign: TextAlign.justify,),
-            */
-
-            /*ReadMoreText(
-
-                'Aplikasi ini adalah sebuah platform yang menyediakan informasi wisata dan fitur stopwatch yang memungkinkan pengguna untuk melihat profil mereka sendiri. Sebelum dapat menggunakan aplikasi ini, pengguna harus melakukan login terlebih dahulu. Berikut adalah langkah-langkah cara menggunakan aplikasi ini: ',
-                
-              trimLines: 2,
-              colorClickableText: Colors.pink,
-              trimMode: TrimMode.Line,
-              trimCollapsedText: 'Show more',
-              trimExpandedText: 'Show less',
-              moreStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-              
-            ),*/
             ],
         )
         )

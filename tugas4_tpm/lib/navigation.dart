@@ -25,6 +25,13 @@ class _NavPageState extends State<NavPage> {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+            theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black //here you can give the text color
+            ),
+        primarySwatch: primaryBlack,
+            ),
       home: Scaffold(
         body: Center(
           child: pages.elementAt(_selectedIndex),
@@ -47,3 +54,20 @@ class _NavPageState extends State<NavPage> {
     );
   }
 }
+
+const MaterialColor primaryBlack = MaterialColor(
+  _blackPrimaryValue,
+  <int, Color>{
+    50: Color(0xFF000000),
+    100: Color(0xFF000000),
+    200: Color(0xFF000000),
+    300: Color(0xFF000000),
+    400: Color(0xFF000000),
+    500: Color(_blackPrimaryValue),
+    600: Color(0xFF000000),
+    700: Color(0xFF000000),
+    800: Color(0xFF000000),
+    900: Color(0xFF000000),
+  },
+);
+const int _blackPrimaryValue = 0xFF000000;

@@ -13,11 +13,12 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: true,
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.transparent,
           elevation: 0,
           title: const Text(
             'Halaman Detail',
@@ -31,7 +32,7 @@ class _DetailPageState extends State<DetailPage> {
               onPressed: () async {
                 final snackBar = SnackBar(
                   content: Text(
-                    '${widget.place.isFavorite ? "Bukan Favorit lagi" : "Berhasil Ditambahkan Ke Favorit"}',
+                    widget.place.isFavorite ? "Bukan Favorit lagi" : "Berhasil Ditambahkan Ke Favorit",
                   ),
                 );
                 ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -43,14 +44,19 @@ class _DetailPageState extends State<DetailPage> {
                 widget.place.isFavorite
                     ? Icons.favorite
                     : Icons.favorite_border,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ],
         ),
-        body: ListView(
+        body: Center(
+          
+          child: 
+          ListView(
           children: [
+            
             SizedBox(height: 20),
+
             Container(
               height: MediaQuery.of(context).size.height / 3,
               child: ListView.builder(
@@ -67,10 +73,13 @@ class _DetailPageState extends State<DetailPage> {
                   }),
             ),
             SizedBox(height: 20),
+
             Padding(
+              
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
               child: Text('${widget.place.openDays}'),
             ),
+            
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
               child: Text('${widget.place.openTime}'),
@@ -91,7 +100,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.fromLTRB(80, 10, 80, 0),
+              padding: const EdgeInsets.fromLTRB(150, 50, 150, 0),
               child: ElevatedButton(
                   onPressed: () {
                     _launchInBrowser('${widget.place.wikiUrl}');
@@ -99,7 +108,9 @@ class _DetailPageState extends State<DetailPage> {
                   child: Text('See Details !')),
             )
           ],
-        ));
+        )
+    )
+    );
   }
 
   Future<void> _launchInBrowser(String url) async {

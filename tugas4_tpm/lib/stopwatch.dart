@@ -41,7 +41,7 @@ class _StopwatchPageState extends State<StopwatchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
           'Stopwatch',
@@ -91,5 +91,11 @@ class _StopwatchPageState extends State<StopwatchPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 }

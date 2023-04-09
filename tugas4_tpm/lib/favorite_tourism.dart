@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'detail_page.dart';
 import 'tourism_place.dart';
 
-class ListTourismPlace extends StatelessWidget {
-  const ListTourismPlace({Key? key}) : super(key: key);
+class FavoriteTourismPlace extends StatelessWidget {
+  const FavoriteTourismPlace({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final favoritePlaces =
+        tourismPlaceList.where((place) => place.isFavorite).toList();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -14,23 +17,26 @@ class ListTourismPlace extends StatelessWidget {
         title: const Text(
           'Tourism Place',
           style: TextStyle(
-              fontSize: 18,
-              fontFamily: 'Sans-Serif',
-              fontWeight: FontWeight.bold),
+            fontSize: 18,
+            fontFamily: 'Sans-Serif',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       body: ListView.builder(
-        itemCount: tourismPlaceList.length,
+        itemCount: favoritePlaces.length,
         itemBuilder: (context, index) {
-          final TourismPlace place = tourismPlaceList[index];
+          final TourismPlace place = favoritePlaces[index];
           return InkWell(
             onTap: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailPage(
-                            place: place,
-                          )));
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(
+                    place: place,
+                  ),
+                ),
+              );
             },
             child: Card(
               child: Row(

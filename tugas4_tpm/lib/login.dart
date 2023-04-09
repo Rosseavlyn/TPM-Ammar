@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
                 child: Image.asset('assets/images/login.png'),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(100, 20, 100, 0),
                 child: TextField(
                   controller: userText,
                   decoration: InputDecoration(
@@ -50,7 +50,7 @@ class _LoginState extends State<Login> {
                 ),
               ),
               Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                padding: const EdgeInsets.fromLTRB(100, 10, 100, 0),
                 child: TextField(
                   obscureText: true,
                   controller: passText,
@@ -62,13 +62,19 @@ class _LoginState extends State<Login> {
                   ),
                 ),
               ),
+              SizedBox(height: 20),
               Container(
                   height: 80,
+                  width: 150,
                   padding: const EdgeInsets.all(20),
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size.fromHeight(50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18)
+                      ),
                     ),
+                    
                     child: const Text('Log In'),
                     onPressed: () {
                       ceklogin(context);
