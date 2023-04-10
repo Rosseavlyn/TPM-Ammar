@@ -44,7 +44,7 @@ class _DetailPageState extends State<DetailPage> {
                 widget.place.isFavorite
                     ? Icons.favorite
                     : Icons.favorite_border,
-                color: Colors.black,
+                color: Colors.red,
               ),
             ),
           ],
@@ -105,7 +105,7 @@ class _DetailPageState extends State<DetailPage> {
                   onPressed: () {
                     _launchInBrowser('${widget.place.wikiUrl}');
                   },
-                  child: Text('See Details !')),
+                  child: Text('See Details')),
             )
           ],
         )

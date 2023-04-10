@@ -19,8 +19,10 @@ class ListTourismPlace extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
         itemCount: tourismPlaceList.length,
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: (Orientation == Orientation.portrait) ? 2:2),
         itemBuilder: (context, index) {
           final TourismPlace place = tourismPlaceList[index];
           return InkWell(
@@ -33,15 +35,23 @@ class ListTourismPlace extends StatelessWidget {
                           )));
             },
             child: Card(
-              child: Row(
+              child: Column(
                 children: [
                   Container(
-                    width: MediaQuery.of(context).size.width / 3,
-                    child: Image.network(place.imageUrls[0]),
+                    width: MediaQuery.of(context).size.width / 2,
+                    height: MediaQuery.of(context).size.height / 4.5,
+                    child: Image.network(place.imageUrls[0],
+                    fit: BoxFit.cover),
+                    
                   ),
+                 
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
-                    child: Text(place.name),
+                    padding: const EdgeInsets.fromLTRB(20, 15, 20, 10),
+                    child: Text(place.name,
+                    style: TextStyle(
+                      fontFamily: 'Sans-Serif',
+                      fontWeight: FontWeight.bold
+                    ),),
                   ),
                 ],
               ),
